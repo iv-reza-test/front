@@ -30,7 +30,7 @@
     <div class="col-md-12">
 
       <div class="card">
-        <h5 class="card-header">Apartments <a class="btn btn-sm btn-info" style="float: right">back</a></h5>
+        <h5 class="card-header">Apartments <button @click="backRoute" class="btn btn-sm btn-info" style="float: right">back</button></h5>
         <div class="card-body">
 
 
@@ -88,6 +88,9 @@ export default {
     }
   },
   methods:{
+    backRoute() {
+      this.$router.go(-1)
+    },
     getList(){
 
       axios.get(BASE_URL+ this.pathUrl + '?floor_id=' + this.$route.query.floor_id).then(function (res){

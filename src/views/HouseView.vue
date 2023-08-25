@@ -35,7 +35,7 @@
     <div class="col-md-12">
 
       <div class="card">
-        <h5 class="card-header">Featured <a class="btn btn-sm btn-info" style="float: right">back</a></h5>
+        <h5 class="card-header">Houses</h5>
         <div class="card-body">
 
 

@@ -30,7 +30,7 @@
     <div class="col-md-12">
 
       <div class="card">
-        <h5 class="card-header">Floors <a class="btn btn-sm btn-info" style="float: right">back</a></h5>
+        <h5 class="card-header">Floors <button @click="backRoute" class="btn btn-sm btn-info" style="float: right">back</button></h5>
         <div class="card-body">
 
 
@@ -76,6 +76,7 @@
 <script>
 import axios from "axios";
 import {BASE_URL} from "@/extra/constants";
+import router from "@/router";
 export default {
   name: "FloorView",
   data(){
@@ -88,6 +89,9 @@ export default {
     }
   },
   methods:{
+    backRoute() {
+      this.$router.go(-1)
+    },
     getList(){
 
       axios.get(BASE_URL+ this.pathUrl + '?entrance_id=' + this.$route.query.entrance_id).then(function (res){

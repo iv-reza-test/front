@@ -30,7 +30,7 @@
     <div class="col-md-12">
 
       <div class="card">
-        <h5 class="card-header">Entrances <a class="btn btn-sm btn-info" style="float: right">back</a></h5>
+        <h5 class="card-header">Entrances <router-link :to="{path:'/'}" class="btn btn-sm btn-info" style="float: right">back</router-link></h5>
         <div class="card-body">
 
 

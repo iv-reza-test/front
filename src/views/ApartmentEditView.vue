@@ -50,7 +50,7 @@ export default {
 
       axios.get(BASE_URL + this.pathUrl + this.$route.params.id).then(function (res){
         this.inputs.name = res.data.name
-        this.parentId = res.data.house_id
+        this.parentId = res.data.floor_id
         console.log(res)
       }.bind(this))
 
@@ -59,7 +59,7 @@ export default {
       axios.put(BASE_URL + this.pathUrl + this.$route.params.id , {name:this.inputs.name})
           .then(function (res) {
 
-            this.$router.push({ name: 'apartment' , query:{'house_id':this.parentId} })
+            this.$router.push({ name: 'apartment' , query:{'floor_id':this.parentId} })
 
           }.bind(this));    }
   },
