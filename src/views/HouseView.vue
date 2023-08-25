@@ -78,6 +78,7 @@
 
 <script>
 import axios from "axios";
+import {BASE_URL} from "@/extra/constants";
 export default {
   name: "HouseView",
   data(){
@@ -88,7 +89,7 @@ export default {
   methods:{
     getList(){
 
-      axios.get('http://localhost:8000/api/houses').then(function (res){
+      axios.get(BASE_URL+'/api/houses').then(function (res){
         this.data = res.data
         console.log(res)
       }.bind(this))
@@ -96,9 +97,11 @@ export default {
     },
     deleteAction(id){
       console.log(id)
-      // axios.delete('api/houses/'+id).then(function (res){
-      //
-      // })
+      axios.delete(BASE_URL+'/api/houses/'+id).then(function (res){
+
+        this.getList()
+
+      }.bind(this))
     }
   },
   mounted() {
