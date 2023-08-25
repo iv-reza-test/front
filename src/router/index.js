@@ -46,6 +46,20 @@ const routes = [
     component: function () {
       return import(/* webpackChunkName: "about" */ '../views/FloorEditView.vue')
     }
+  },
+  {
+    path: '/apartments',
+    name: 'apartment',
+    component: function () {
+      return import(/* webpackChunkName: "about" */ '../views/ApartmentView.vue')
+    }
+  },
+  {
+    path: '/apartments/:id',
+    name: 'apartment-edit',
+    component: function () {
+      return import(/* webpackChunkName: "about" */ '../views/ApartmentEditView.vue')
+    }
   }
 ]
 

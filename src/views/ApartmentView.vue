@@ -30,7 +30,7 @@
     <div class="col-md-12">
 
       <div class="card">
-        <h5 class="card-header">Floors <a class="btn btn-sm btn-info" style="float: right">back</a></h5>
+        <h5 class="card-header">Apartments <a class="btn btn-sm btn-info" style="float: right">back</a></h5>
         <div class="card-body">
 
 
@@ -50,9 +50,9 @@
                 <td >{{row['name']}}</td>
 
                 <td>
-                  <router-link :to="'/floors/'+row['id']" class="me-1 btn-sm btn btn-info">edit</router-link>
-                  <button class="btn-sm btn btn-warning me-1 " @click="deleteAction(row['id'])">delete</button>
-                  <router-link :to="{name:'apartment',query: { floor_id: row['id'] }}" class="me-1 btn-sm btn btn-primary">Apartments</router-link>
+                  <router-link :to="'/apartments/'+row['id']" class="me-1 btn-sm btn btn-info">edit</router-link>
+                  <button class="btn-sm btn btn-warning" @click="deleteAction(row['id'])">delete</button>
+<!--                  <router-link :to="{name:'floor',query: { house_id: row['id'] }}" class="me-1 btn-sm btn btn-primary">Apartments</router-link>-->
 
 
                 </td>
@@ -77,10 +77,10 @@
 import axios from "axios";
 import {BASE_URL} from "@/extra/constants";
 export default {
-  name: "FloorView",
+  name: "ApartmentView",
   data(){
     return {
-      pathUrl:'/api/floors',
+      pathUrl:'/api/apartments',
       data:null,
       input:{
         name:null,
@@ -90,7 +90,7 @@ export default {
   methods:{
     getList(){
 
-      axios.get(BASE_URL+ this.pathUrl + '?entrance_id=' + this.$route.query.entrance_id).then(function (res){
+      axios.get(BASE_URL+ this.pathUrl + '?floor_id=' + this.$route.query.floor_id).then(function (res){
         this.data = res.data
         console.log(res)
       }.bind(this))
@@ -106,7 +106,7 @@ export default {
     },
     store(){
 
-      axios.post(BASE_URL + this.pathUrl , {name:this.input.name , entrance_id: this.$route.query.entrance_id})
+      axios.post(BASE_URL + this.pathUrl , {name:this.input.name , floor_id: this.$route.query.floor_id})
           .then(function (res) {
         this.getList()
 
