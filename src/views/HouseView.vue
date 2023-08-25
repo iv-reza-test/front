@@ -10,17 +10,17 @@
           <div class="row">
             <div class="col-md-4">
               <div class="mb-3">
-                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                <input type="text" class="form-control" v-model="input.name" placeholder="name">
               </div>
             </div>
             <div class="col-md-4">
               <div class="mb-3">
-                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                <input type="text" class="form-control" v-model="input.street" placeholder="address">
               </div>
             </div>
 
             <div class="col-auto">
-              <button type="submit" class="btn btn-primary mb-3">Confirm identity</button>
+              <button type="submit" class="btn btn-primary mb-3" @click="store">Save</button>
             </div>
 
           </div>
@@ -83,7 +83,11 @@ export default {
   name: "HouseView",
   data(){
     return {
-      data:null
+      data:null,
+      input:{
+        name:null,
+        street:null
+      }
     }
   },
   methods:{
@@ -102,6 +106,18 @@ export default {
         this.getList()
 
       }.bind(this))
+    },
+    store(){
+
+      axios.post(BASE_URL+'/api/houses/' , {name:this.input.name , street:this.input.street})
+          .then(function (res) {
+        this.getList()
+
+            this.input.name = null
+            this.input.street = null
+
+      }.bind(this));
+
     }
   },
   mounted() {
