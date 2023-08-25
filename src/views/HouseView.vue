@@ -45,6 +45,9 @@
               <tr>
                 <th scope="col">#</th>
                 <th scope="col">name</th>
+                <th scope="col"># entrances</th>
+                <th scope="col"># floors</th>
+                <th scope="col"># apartments</th>
                 <th scope="col">actions</th>
               </tr>
               </thead>
@@ -53,6 +56,10 @@
               <tr v-for="row in data">
                 <th scope="row">{{row['id']}}</th>
                 <td >{{row['name']}}</td>
+                <td >{{row['count_entrance']}}</td>
+                <td >{{row['count_floor']}}</td>
+                <td >{{row['count_apartment']}}</td>
+
 
                 <td>
                   <router-link :to="'/houses/'+row['id']" class="me-1 btn-sm btn btn-info">edit</router-link>
