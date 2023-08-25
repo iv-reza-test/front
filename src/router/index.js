@@ -32,6 +32,20 @@ const routes = [
     component: function () {
       return import(/* webpackChunkName: "about" */ '../views/EntranceEditView.vue')
     }
+  },
+  {
+    path: '/floors',
+    name: 'floor',
+    component: function () {
+      return import(/* webpackChunkName: "about" */ '../views/FloorView.vue')
+    }
+  },
+  {
+    path: '/floors/:id',
+    name: 'floor-edit',
+    component: function () {
+      return import(/* webpackChunkName: "about" */ '../views/FloorEditView.vue')
+    }
   }
 ]
 

@@ -51,8 +51,8 @@
 
                 <td>
                   <router-link :to="'/entrances/'+row['id']" class="me-1 btn-sm btn btn-info">edit</router-link>
-                  <button class="btn-sm btn btn-warning" @click="deleteAction(row['id'])">delete</button>
-<!--                  <router-link :to="{name:'entrance',query: { house_id: row['id'] }}" class="me-1 btn-sm btn btn-primary">Floors</router-link>-->
+                  <button class="btn-sm btn btn-warning me-1" @click="deleteAction(row['id'])">delete</button>
+                  <router-link :to="{name:'floor',query: { entrance_id: row['id'] }}" class="me-1 btn-sm btn btn-primary">Floors</router-link>
 
 
                 </td>
