@@ -18,6 +18,20 @@ const routes = [
     component: function () {
       return import(/* webpackChunkName: "about" */ '../views/HouseEditView.vue')
     }
+  },
+  {
+    path: '/entrances',
+    name: 'entrance',
+    component: function () {
+      return import(/* webpackChunkName: "about" */ '../views/EntranceView.vue')
+    }
+  },
+  {
+    path: '/entrances/:id',
+    name: 'entrance-edit',
+    component: function () {
+      return import(/* webpackChunkName: "about" */ '../views/EntranceEditView.vue')
+    }
   }
 ]
 

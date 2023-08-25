@@ -13,11 +13,6 @@
                 <input type="text" class="form-control" v-model="input.name" placeholder="name">
               </div>
             </div>
-            <div class="col-md-4">
-              <div class="mb-3">
-                <input type="text" class="form-control" v-model="input.street" placeholder="address">
-              </div>
-            </div>
 
             <div class="col-auto">
               <button type="submit" class="btn btn-primary mb-3" @click="store">Save</button>
@@ -35,7 +30,7 @@
     <div class="col-md-12">
 
       <div class="card">
-        <h5 class="card-header">Featured <a class="btn btn-sm btn-info" style="float: right">back</a></h5>
+        <h5 class="card-header">Entrances <a class="btn btn-sm btn-info" style="float: right">back</a></h5>
         <div class="card-body">
 
 
@@ -55,9 +50,9 @@
                 <td >{{row['name']}}</td>
 
                 <td>
-                  <router-link :to="'/houses/'+row['id']" class="me-1 btn-sm btn btn-info">edit</router-link>
-                  <button class="btn-sm btn btn-warning me-1" @click="deleteAction(row['id'])">delete</button>
-                  <router-link :to="{name:'entrance',query: { house_id: row['id'] }}" class="me-1 btn-sm btn btn-primary">Entrance</router-link>
+                  <router-link :to="'/entrances/'+row['id']" class="me-1 btn-sm btn btn-info">edit</router-link>
+                  <button class="btn-sm btn btn-warning" @click="deleteAction(row['id'])">delete</button>
+<!--                  <router-link :to="{name:'entrance',query: { house_id: row['id'] }}" class="me-1 btn-sm btn btn-primary">Floors</router-link>-->
 
 
                 </td>
@@ -82,20 +77,20 @@
 import axios from "axios";
 import {BASE_URL} from "@/extra/constants";
 export default {
-  name: "HouseView",
+  name: "EntranceView",
   data(){
     return {
+      pathUrl:'/api/entrances',
       data:null,
       input:{
         name:null,
-        street:null
       }
     }
   },
   methods:{
     getList(){
 
-      axios.get(BASE_URL+'/api/houses').then(function (res){
+      axios.get(BASE_URL+ this.pathUrl + '?house_id=' + this.$route.query.house_id).then(function (res){
         this.data = res.data
         console.log(res)
       }.bind(this))
@@ -103,7 +98,7 @@ export default {
     },
     deleteAction(id){
       console.log(id)
-      axios.delete(BASE_URL+'/api/houses/'+id).then(function (res){
+      axios.delete(BASE_URL + this.pathUrl + '/' + id).then(function (res){
 
         this.getList()
 
@@ -111,12 +106,11 @@ export default {
     },
     store(){
 
-      axios.post(BASE_URL+'/api/houses/' , {name:this.input.name , street:this.input.street})
+      axios.post(BASE_URL + this.pathUrl , {name:this.input.name , house_id: this.$route.query.house_id})
           .then(function (res) {
         this.getList()
 
             this.input.name = null
-            this.input.street = null
 
       }.bind(this));
 
