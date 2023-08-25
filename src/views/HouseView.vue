@@ -55,7 +55,7 @@
                 <td >{{row['name']}}</td>
 
                 <td>
-                  <a class="me-1 btn-sm btn btn-info">edit</a>
+                  <router-link :to="'/houses/'+row['id']" class="me-1 btn-sm btn btn-info">edit</router-link>
                   <button class="btn-sm btn btn-warning" @click="deleteAction(row['id'])">delete</button>
 
                 </td>
