@@ -1,4 +1,9 @@
 # front
+## Change BaseUrl
+### for connection to backend
+```
+/src/extra/constants.js
+```
 
 ## Project setup
 ```
